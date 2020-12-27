@@ -7,8 +7,7 @@ if [ -z "$1" ]; then
   if [ -f "./backup_codes.zip" ]; then
     FILE="backup_codes.zip"
   else
-    echo -n "Enter zip file to decrypt: "
-    read FILE
+    read -e -p "Enter zip file to decrypt: " FILE
   fi
 fi
 

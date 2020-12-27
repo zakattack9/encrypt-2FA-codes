@@ -39,5 +39,5 @@ brew install p7zip
 ```
 
 ### TODO
-- hide typed in encrypt password and add another prompt to verify typed in password
 - ensure the entered encrypt password is not visible in `.history`
+- remove the recovery and setup codes folders if decryption fails

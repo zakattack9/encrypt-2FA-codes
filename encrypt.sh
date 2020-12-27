@@ -12,30 +12,29 @@ fi
 
 if [ ! -d "$RECOVERY_CODES_DIR" ]; then
   # prompt for recovery codes directory and supress newline after echo (-n arg)
-  echo -n "Enter recovery codes directory to encrypt (use * for current directory or hit enter to skip): "
-  read RECOVERY_CODES_DIR
+  read -e -p "Enter recovery codes directory to encrypt (use * for current directory or hit enter to skip): " RECOVERY_CODES_DIR
+  echo ""
 fi
 
 if [ ! -d "$SETUP_CODES_DIR" ]; then
   # prompt for setup codes directory and supress newline after echo (-n arg)
-  echo -n "Enter setup codes directory to encrypt (use * for current directory or hit enter to skip): "
-  read SETUP_CODES_DIR
+  read -e -p "Enter setup codes directory to encrypt (use * for current directory or hit enter to skip): " SETUP_CODES_DIR
+  echo ""
 fi
 
 PASSWORD="0"
 PASSWORD_VERIFY="1"
 while [[ ! $PASSWORD == $PASSWORD_VERIFY ]]; do
   # prompt for password to AES256 encrypt archive with
-  printf "Enter encrypt password: "
-  read -s PASSWORD
+  read -s -p "Enter encrypt password: " PASSWORD
 
   # verify the inputted password
-  printf "\nVerify encrypt password: "
-  read -s PASSWORD_VERIFY
+  echo ""; read -s -p "Verify encrypt password: " PASSWORD_VERIFY
 
   if [[ ! $PASSWORD == $PASSWORD_VERIFY ]]; then
-    printf "\nPasswords do not match, try again.\n\n"
+    printf "\nPasswords do not match, try again.\n"
   fi
+  echo ""
 done
 
 # use 7-zip to encrypt specified directory
