@@ -1,19 +1,19 @@
 #!/bin/bash
 
 DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-backup-codes/master/decrypt.sh"
-SETUP_CODES_DIR="./setup_codes"
 RECOVERY_CODES_DIR="./recovery_codes"
-
-if [ ! -d "$SETUP_CODES_DIR" ]; then
-  # prompt for setup codes directory and supress newline after echo (-n arg)
-  echo -n "Enter setup codes directory to encrypt (use * for current directory): "
-  read SETUP_CODES_DIR
-fi
+SETUP_CODES_DIR="./setup_codes"
 
 if [ ! -d "$RECOVERY_CODES_DIR" ]; then
   # prompt for recovery codes directory and supress newline after echo (-n arg)
-  echo -n "Enter recovery codes directory to encrypt (use * for current directory): "
+  echo -n "Enter recovery codes directory to encrypt (use * for current directory or hit enter to skip): "
   read RECOVERY_CODES_DIR
+fi
+
+if [ ! -d "$SETUP_CODES_DIR" ]; then
+  # prompt for setup codes directory and supress newline after echo (-n arg)
+  echo -n "Enter setup codes directory to encrypt (use * for current directory or hit enter to skip): "
+  read SETUP_CODES_DIR
 fi
 
 # prompt for password to AES256 encrypt archive with
