@@ -5,10 +5,10 @@ When enabling 2FA for online accounts oftentimes you'll receive recovery codes t
 It is important to note that both the encrypt and decrypt scripts come with self cleanup and will auto-generate the respective encrypt/decrypt script depending on the current state of the 2FA codes. For example, if you're encrypting your 2FA codes, `encrypt.sh` will automatically generate `decrypt.sh` if it detects that it's not in the current directory where the encrypt script was run; likewise, if you're decrypting your 2FA codes, `decrypt.sh` will automatically generate `encrypt.sh` if it detects that it's not  in the current directory where the decrypt script was run. 
 
 ```shell
-curl https://raw.githubusercontent.com/zakattack9/encrypt-backup-codes/master/encrypt.sh -o encrypt.sh && chmod +x encrypt.sh
+curl https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/encrypt.sh -o encrypt.sh && chmod +x encrypt.sh
 
 # it is optional to pull down the decrypt script since encrypt.sh will automatically do this
-curl https://raw.githubusercontent.com/zakattack9/encrypt-backup-codes/master/decrypt.sh -o decrypt.sh && chmod +x decrypt.sh
+curl https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh -o decrypt.sh && chmod +x decrypt.sh
 ```
 
 ### Running the Scripts
@@ -24,7 +24,7 @@ By default, the encrypted zip file is called `backup_codes.zip`. When encrypting
 ./decrypt.sh
 
 # alternatively, run the decrypt script by passing in a specific zip filename
-,/decrypt.sh not_named_backup_codes.zip
+./decrypt.sh not_named_backup_codes.zip
 ```
 
 ### For MacOS
@@ -34,3 +34,7 @@ brew update
 brew install p7zip
 # installs 7z, 7za, and 7zr
 ```
+
+### TODO
+- add ability to pass in zip filename to encrypt script
+- ensure the entered encrypt password is not visible in `.history`
