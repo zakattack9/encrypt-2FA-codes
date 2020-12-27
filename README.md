@@ -39,7 +39,3 @@ brew update
 brew install p7zip
 # installs 7z, 7za, and 7zr
 ```
-
-### TODO
-- ensure the entered encrypt password is not visible in `.history`
-- remove the recovery and setup codes folders if decryption fails

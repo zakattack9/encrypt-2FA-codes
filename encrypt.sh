@@ -1,5 +1,4 @@
 #!/bin/bash
-
 DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh"
 RECOVERY_CODES_DIR="./recovery_codes"
 SETUP_CODES_DIR="./setup_codes"
@@ -11,14 +10,14 @@ if [ ! -z "$1" ]; then
 fi
 
 if [ ! -d "$RECOVERY_CODES_DIR" ]; then
-  # prompt for recovery codes directory and supress newline after echo (-n arg)
-  read -e -p "Enter recovery codes directory to encrypt (use * for current directory or hit enter to skip): " RECOVERY_CODES_DIR
+  # prompt for recovery codes directory
+  read -e -p "Enter recovery codes directory to encrypt (use * for current directory or hit [ENTER] to skip): " RECOVERY_CODES_DIR
   echo ""
 fi
 
 if [ ! -d "$SETUP_CODES_DIR" ]; then
-  # prompt for setup codes directory and supress newline after echo (-n arg)
-  read -e -p "Enter setup codes directory to encrypt (use * for current directory or hit enter to skip): " SETUP_CODES_DIR
+  # prompt for setup codes directory
+  read -e -p "Enter setup codes directory to encrypt (use * for current directory or hit [ENTER] to skip): " SETUP_CODES_DIR
   echo ""
 fi
 
@@ -54,9 +53,9 @@ if [ $? -eq 0 ]; then
 
   printf "\nDelete encrypt script?\n"
   printf "Enter (y)es or (n)o: "
-  read cleanup
+  read CLEANUP
 
-  if [[ $cleanup == "y" ]]; then
+  if [[ $CLEANUP == "y" ]]; then
     printf "\nCleaning up...\n"
     rm -- "$0"
   fi
