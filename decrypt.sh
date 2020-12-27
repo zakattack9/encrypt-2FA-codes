@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENCRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-backup-codes/master/encrypt.sh"
+ENCRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/encrypt.sh"
 FILE=$1
 
 if [ -z "$1" ]; then

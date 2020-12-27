@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-backup-codes/master/decrypt.sh"
+DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh"
 RECOVERY_CODES_DIR="./recovery_codes"
 SETUP_CODES_DIR="./setup_codes"
 
