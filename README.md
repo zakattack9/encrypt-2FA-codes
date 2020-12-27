@@ -19,11 +19,14 @@ By default, the encrypted zip file is called `backup_codes.zip`. When encrypting
 # it will ask to enter the directory name if the naming conventions aren't used
 ./encrypt.sh
 
+# alternatively, pass in a specific filename for the encrypted zip
+./encrypt.sh not_named_backup_codes.zip
+
 # to run the decrypt script with the above naming convention
 # it will ask to enter the zip filename if the naming convention isn't used
 ./decrypt.sh
 
-# alternatively, run the decrypt script by passing in a specific zip filename
+# alternatively, pass in a specific file to decrypt
 ./decrypt.sh not_named_backup_codes.zip
 ```
 

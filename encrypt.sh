@@ -3,6 +3,12 @@
 DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh"
 RECOVERY_CODES_DIR="./recovery_codes"
 SETUP_CODES_DIR="./setup_codes"
+ENCRYPTED_ZIP="backup_codes.zip"
+
+# set encrypted zip to passed in filename
+if [ ! -z "$1" ]; then
+  ENCRYPTED_ZIP="$1.zip"
+fi
 
 if [ ! -d "$RECOVERY_CODES_DIR" ]; then
   # prompt for recovery codes directory and supress newline after echo (-n arg)
@@ -16,12 +22,24 @@ if [ ! -d "$SETUP_CODES_DIR" ]; then
   read SETUP_CODES_DIR
 fi
 
-# prompt for password to AES256 encrypt archive with
-echo -n "Enter encrypt password: "
-read password
+PASSWORD="0"
+PASSWORD_VERIFY="1"
+while [[ ! $PASSWORD == $PASSWORD_VERIFY ]]; do
+  # prompt for password to AES256 encrypt archive with
+  printf "Enter encrypt password: "
+  read -s PASSWORD
+
+  # verify the inputted password
+  printf "\nVerify encrypt password: "
+  read -s PASSWORD_VERIFY
+
+  if [[ ! $PASSWORD == $PASSWORD_VERIFY ]]; then
+    printf "\nPasswords do not match, try again.\n\n"
+  fi
+done
 
 # use 7-zip to encrypt specified directory
-7za a -tzip "-p$password" -mem=AES256 backup_codes.zip $SETUP_CODES_DIR $RECOVERY_CODES_DIR
+7za a -tzip "-p$PASSWORD" -mem=AES256 $ENCRYPTED_ZIP $SETUP_CODES_DIR $RECOVERY_CODES_DIR
 
 # check if zip command ran successfully before deleting the setup and recovery codes folders
 if [ $? -eq 0 ]; then
@@ -36,7 +54,7 @@ if [ $? -eq 0 ]; then
   fi
 
   printf "\nDelete encrypt script?\n"
-  printf "Enter (y)es or (n)o\n"
+  printf "Enter (y)es or (n)o: "
   read cleanup
 
   if [[ $cleanup == "y" ]]; then

@@ -28,7 +28,7 @@ if [ $? -eq 0 ]; then
   fi
 
   printf "\nDelete decrypt script?\n"
-  printf "Enter (y)es or (n)o\n"
+  printf "Enter (y)es or (n)o: "
   read cleanup
 
   if [[ $cleanup == "y" ]]; then
