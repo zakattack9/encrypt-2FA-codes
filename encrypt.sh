@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-backup-codes/master/decrypt.sh"
 SETUP_CODES_DIR="./setup_codes"
 RECOVERY_CODES_DIR="./recovery_codes"
 
@@ -27,6 +28,17 @@ if [ $? -eq 0 ]; then
   # remove plaintext setup and recovery codes folders
   rm -rf $SETUP_CODES_DIR $RECOVERY_CODES_DIR
   echo "Encrypted $SETUP_CODES_DIR and $RECOVERY_CODES_DIR successfully!!!"
+
+  echo "Delete encrypt script and generate decrypt script?"
+  echo "Enter (y)es or (n)o"
+  read cleanup
+
+  if [[ $cleanup == "y" ]]; then
+    echo "Cleaning up..."
+    curl $DECRYPT_SCRIPT_RAW -o decrypt.sh
+    chmod +x decrypt.sh
+    rm -- "$0"
+  fi
 else
   echo "Failed to encrypt the specified directories"
 fi
