@@ -19,22 +19,23 @@ fi
 if [ $? -eq 0 ]; then
   # remove backup_codes.zip
   rm backup_codes.zip
-  echo "Decrypted $FILE codes successfully!!!"
+  printf "\nDecrypted $FILE codes successfully!!!\n"
 
   if [ ! -f "./encrypt.sh" ]; then
-    echo "Generating encrypt script..."
+    printf "\nGenerating encrypt script...\n"
     curl $ENCRYPT_SCRIPT_RAW -o encrypt.sh
     chmod +x encrypt.sh
   fi
 
-  echo "Delete decrypt script?"
-  echo "Enter (y)es or (n)o"
+  printf "\nDelete decrypt script?\n"
+  printf "Enter (y)es or (n)o\n"
   read cleanup
 
   if [[ $cleanup == "y" ]]; then
-    echo "Cleaning up..."
+    printf "\nCleaning up...\n"
     rm -- "$0"
   fi
 else
-  echo "Failed to decrypt the zip file"
+  printf "\nFailed to decrypt the zip file :(\n"
+  rm -rf ./setup_codes ./recovery_codes
 fi

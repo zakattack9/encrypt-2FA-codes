@@ -27,22 +27,22 @@ read password
 if [ $? -eq 0 ]; then
   # remove plaintext setup and recovery codes folders
   rm -rf $SETUP_CODES_DIR $RECOVERY_CODES_DIR
-  echo "Encrypted $SETUP_CODES_DIR and $RECOVERY_CODES_DIR successfully!!!"
+  printf "\nEncrypted $SETUP_CODES_DIR and $RECOVERY_CODES_DIR successfully!!!\n"
 
   if [ ! -f "./decrypt.sh" ]; then
-    echo "Generating decrypt script..."
+    printf "\nGenerating decrypt script...\n"
     curl $DECRYPT_SCRIPT_RAW -o decrypt.sh
     chmod +x decrypt.sh
   fi
 
-  echo "\nDelete encrypt script?"
-  echo "Enter (y)es or (n)o"
+  printf "\nDelete encrypt script?\n"
+  printf "Enter (y)es or (n)o\n"
   read cleanup
 
   if [[ $cleanup == "y" ]]; then
-    echo "Cleaning up..."
+    printf "\nCleaning up...\n"
     rm -- "$0"
   fi
 else
-  echo "Failed to encrypt the specified directories"
+  printf "\nFailed to encrypt the specified directories :(\n"
 fi
