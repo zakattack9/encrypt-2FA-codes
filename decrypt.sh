@@ -18,7 +18,7 @@ fi
 # check if unzip command ran successfully before deleting the zip file
 if [ $? -eq 0 ]; then
   # remove backup_codes.zip
-  rm backup_codes.zip
+  rm $FILE
   printf "\nDecrypted $FILE codes successfully!!!\n"
 
   if [ ! -f "./encrypt.sh" ]; then
