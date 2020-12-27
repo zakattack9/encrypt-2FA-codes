@@ -29,14 +29,18 @@ if [ $? -eq 0 ]; then
   rm -rf $SETUP_CODES_DIR $RECOVERY_CODES_DIR
   echo "Encrypted $SETUP_CODES_DIR and $RECOVERY_CODES_DIR successfully!!!"
 
-  echo "Delete encrypt script and generate decrypt script?"
+  if [ ! -f "./decrypt.sh" ]; then
+    echo "Generating decrypt script..."
+    curl $DECRYPT_SCRIPT_RAW -o decrypt.sh
+    chmod +x decrypt.sh
+  fi
+
+  echo "\nDelete encrypt script?"
   echo "Enter (y)es or (n)o"
   read cleanup
 
   if [[ $cleanup == "y" ]]; then
     echo "Cleaning up..."
-    curl $DECRYPT_SCRIPT_RAW -o decrypt.sh
-    chmod +x decrypt.sh
     rm -- "$0"
   fi
 else

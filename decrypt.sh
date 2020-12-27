@@ -21,14 +21,18 @@ if [ $? -eq 0 ]; then
   rm backup_codes.zip
   echo "Decrypted $FILE codes successfully!!!"
 
-  echo "Delete decrypt script and generate encrypt script?"
+  if [ ! -f "./encrypt.sh" ]; then
+    echo "Generating encrypt script..."
+    curl $ENCRYPT_SCRIPT_RAW -o encrypt.sh
+    chmod +x encrypt.sh
+  fi
+
+  echo "Delete decrypt script?"
   echo "Enter (y)es or (n)o"
   read cleanup
 
   if [[ $cleanup == "y" ]]; then
     echo "Cleaning up..."
-    curl $ENCRYPT_SCRIPT_RAW -o encrypt.sh
-    chmod +x encrypt.sh
     rm -- "$0"
   fi
 else
