@@ -37,4 +37,5 @@ brew install p7zip
 
 ### TODO
 - add ability to pass in zip filename to encrypt script
+- hide typed in encrypt password and add another prompt to verify typed in password
 - ensure the entered encrypt password is not visible in `.history`
