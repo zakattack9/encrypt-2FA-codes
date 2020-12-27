@@ -20,7 +20,7 @@ By default, the encrypted zip file is called `backup_codes.zip`. When encrypting
 ./encrypt.sh
 
 # alternatively, pass in a specific filename for the encrypted zip
-./encrypt.sh not_named_backup_codes.zip
+./encrypt.sh not_named_backup_codes
 
 # to run the decrypt script with the above naming convention
 # it will ask to enter the zip filename if the naming convention isn't used
@@ -39,6 +39,5 @@ brew install p7zip
 ```
 
 ### TODO
-- add ability to pass in zip filename to encrypt script
 - hide typed in encrypt password and add another prompt to verify typed in password
 - ensure the entered encrypt password is not visible in `.history`
