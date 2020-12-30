@@ -47,7 +47,7 @@ done
 # check if zip command ran successfully before deleting the setup and recovery codes folders
 if [ $? -eq 0 ]; then
   # remove plaintext setup and recovery codes folders
-  rm -rf $SETUP_CODES_DIR $RECOVERY_CODES_DIR
+  rm -rf $SETUP_CODES_DIR $RECOVERY_CODES_DIR $MISC_DIR
   printf "\nEncrypted $SETUP_CODES_DIR and $RECOVERY_CODES_DIR successfully!!!\n"
 
   if [ ! -f "./decrypt.sh" ]; then

@@ -1,5 +1,8 @@
 #!/bin/bash
 ENCRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/encrypt.sh"
+RECOVERY_CODES_DIR="./recovery_codes"
+SETUP_CODES_DIR="./setup_codes"
+MISC_DIR="./misc"
 FILE=$1
 
 # set encrypted zip to default or passed in file
@@ -36,5 +39,5 @@ if [ $? -eq 0 ]; then
   fi
 else
   printf "\nFailed to decrypt the zip file :(\n"
-  rm -rf ./setup_codes ./recovery_codes ./misc
+  rm -rf $SETUP_CODES_DIR $RECOVERY_CODES_DIR $MISC_DIR
 fi
