@@ -2,6 +2,7 @@
 DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh"
 RECOVERY_CODES_DIR="./recovery_codes"
 SETUP_CODES_DIR="./setup_codes"
+MISC_DIR="./misc"
 ENCRYPTED_ZIP="backup_codes.zip"
 
 # set encrypted zip to passed in filename
@@ -21,6 +22,10 @@ if [ ! -d "$SETUP_CODES_DIR" ]; then
   echo ""
 fi
 
+if [ ! -d "$MISC_DIR" ]; then
+  MISC_DIR=""
+fi
+
 PASSWORD="0"
 PASSWORD_VERIFY="1"
 while [[ ! $PASSWORD == $PASSWORD_VERIFY ]]; do
@@ -37,7 +42,7 @@ while [[ ! $PASSWORD == $PASSWORD_VERIFY ]]; do
 done
 
 # use 7-zip to encrypt specified directory
-7za a -tzip "-p$PASSWORD" -mem=AES256 $ENCRYPTED_ZIP $SETUP_CODES_DIR $RECOVERY_CODES_DIR
+7za a -tzip "-p$PASSWORD" -mem=AES256 $ENCRYPTED_ZIP $SETUP_CODES_DIR $RECOVERY_CODES_DIR $MISC_DIR
 
 # check if zip command ran successfully before deleting the setup and recovery codes folders
 if [ $? -eq 0 ]; then

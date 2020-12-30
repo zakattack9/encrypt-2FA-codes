@@ -36,5 +36,5 @@ if [ $? -eq 0 ]; then
   fi
 else
   printf "\nFailed to decrypt the zip file :(\n"
-  rm -rf ./setup_codes ./recovery_codes
+  rm -rf ./setup_codes ./recovery_codes ./misc
 fi
