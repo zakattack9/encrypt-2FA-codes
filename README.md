@@ -4,7 +4,7 @@ When enabling 2FA for online accounts, oftentimes you'll receive recovery codes 
 The safest method of storing both the recovery and setup codes is to first encrypt these 2FA codes, then store the encrypted codes offline across multiple hard drives; to make this process easier, the `encrypt.sh` and `decrypt.sh` scripts in this repo will compress all relevant 2FA codes into a single encrypted zip file that can be stored across multiple hard drives and later decrypted/decompressed.
 
 ### Retrieving the Scripts
-It is important to note that both the encrypt and decrypt scripts come with a self cleanup option and will auto-generate the respective encrypt/decrypt script depending on the current state of the 2FA codes. For example, if you're encrypting your 2FA codes, `encrypt.sh` will automatically generate `decrypt.sh` if it detects that it's not in the current directory where the encrypt script was run; likewise, if you're decrypting your 2FA codes, `decrypt.sh` will automatically generate `encrypt.sh` if it detects that it's not in the current directory where the decrypt script was run. With this in mind, the encrypt script can safely be deleted after encrypting since the decrypt script will have already been generated and vice versa.
+It is important to note that both the encrypt and decrypt scripts come with a self cleanup option and will auto-generate the respective encrypt/decrypt script depending on the current state of the 2FA codes. For example, if you're encrypting your 2FA codes, `encrypt.sh` will automatically generate `decrypt.sh` if it detects that it's not in the current directory where the encrypt script was run; likewise, if you're decrypting your 2FA codes, `decrypt.sh` will automatically generate `encrypt.sh` if it detects that it's not in the current directory where the decrypt script was run. With this in mind, the encrypt script can be safely deleted after encrypting the 2FA codes since the decrypt script will have already been generated and vice versa.
 
 ```shell
 # gets the encrypt script
@@ -40,3 +40,5 @@ brew update
 brew install p7zip
 # installs 7z, 7za, and 7zr
 ```
+### For Windows and Linux
+Reference the [7-zip downloads page](https://www.7-zip.org/download.html)
