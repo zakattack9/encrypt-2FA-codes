@@ -1,9 +1,9 @@
 #!/bin/bash
-DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh"
+readonly DECRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/decrypt.sh"
+ENCRYPTED_ZIP="backup_codes.zip"
 RECOVERY_CODES_DIR="./recovery_codes"
 SETUP_CODES_DIR="./setup_codes"
 MISC_DIR="./misc"
-ENCRYPTED_ZIP="backup_codes.zip"
 
 # set encrypted zip to passed in filename
 if [ ! -z "$1" ]; then

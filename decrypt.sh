@@ -1,5 +1,5 @@
 #!/bin/bash
-ENCRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/encrypt.sh"
+readonly ENCRYPT_SCRIPT_RAW="https://raw.githubusercontent.com/zakattack9/encrypt-2FA-codes/master/encrypt.sh"
 RECOVERY_CODES_DIR="./recovery_codes"
 SETUP_CODES_DIR="./setup_codes"
 MISC_DIR="./misc"
